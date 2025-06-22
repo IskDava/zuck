@@ -16,30 +16,37 @@ nav {
     background-color: #2c2e31;
     padding: 10px;
     border-radius: 10px;
-    width: 570px;
+    width: 350px;
     margin: 0 auto;
 }
-nav >:not(input) {
+nav > *:not(input) {
     cursor: pointer;
 }
-nav >:hover {
+nav > *:hover {
     color: yellow;
+}
+nav > * {
+    margin-right: 3px;
+}
+#home {
+    margin-left: 3px;
 }
 input[type="search"] {
     border-radius: 5px;
-    border: 1px solid yellow;
-    color: yellow;
+    border: 1px solid white;
+    color: white;
     background-color: #2c2e31;
     text-align: center;
+    margin-top: 4px;
 }
-#search-icon {
-    width: 15px;
-    height: 15px;
+input[type="search"]:focus {
+    border-color: yellow;
+    outline: none;
     color: yellow
 }
 main {
-    overflow-x: scroll;
     padding-bottom: 30px;
+    margin-top: 50px;
 }
 #choice {
     display: flex;
@@ -57,22 +64,22 @@ main {
 img.option {
     padding: 10px;
     border: 2px solid hsl(0, 0%, 30%);
-    border-radius: 10px;
-    max-width: 250px;
-    max-height: 250px;
+    border-radius: 100px;
+    max-width: 400px;
+    max-height: 400px;
     cursor: pointer;
-}
-img.option:hover, figcaption:hover {
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
-    transition: box-shadow 0.3s;
+    min-width: 250px;
+    min-height: 250px;
 }
 img.option + figcaption {
-    color: yellow;
-    text-align: center;
+    color: gray;
     background-color: hsl(0, 0%, 30%);
     border-radius: 5px;
     cursor: pointer;
-    padding: 5px;
+    padding: 5px 20px;
+    width: fit-content;
+    margin: 10px auto;
+    font-size: 20px;
 }
 #versus-sign {
     font-size: 30px;
@@ -84,33 +91,28 @@ img.option + figcaption {
     flex: 0 0 auto;
     white-space: nowrap;
 }
-.winner-title {
-    color: yellow;
-    font-size: 30px;
-    background-color: hsl(0, 0%, 30%);
-    border-radius: 5px;
-    padding: 10px;
-}
 .next-versus {
     color: white;
     background-color: hsl(0, 0%, 30%);
     border: 3px solid #2c2e31;
     border-radius: 5px;
-    width: 130px;
+    width: 190px;
     padding: 5px;
     display: block;
     margin: 0 auto;
     font-size: 20px;
     cursor: pointer;
-    box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+    font-size: 30px;
 }
 .next-versus:hover {
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
-    transition: box-shadow 0.5s;
+    color: yellow;
 }
 .end-text {
     display: block;
     width: 400px;
     margin: 300px auto;
     font-size: 40px;
+}
+.highlighted figure figcaption {
+    color: yellow;
 }
