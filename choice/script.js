@@ -141,53 +141,56 @@ captions[0].innerText = people.boys[count++]
 captions[1].innerText = people.boys[count++]
 
 function win(winner) {
-    if (!winner.classList.contains("winner")) {
-        winner.classList.add("winner")
+    document.querySelectorAll(".winner").forEach(el => el.classList.remove("winner"))
+    winner.classList.add('winner')
+    const potentialBtn = document.querySelector(".next-versus")
+    if (potentialBtn) {
+        potentialBtn.remove()
     }
-    
-    if (!document.querySelector(".next-versus")) {
-        const btn = document.createElement("button")
-        btn.innerText = "Next versus"
-        btn.classList.add("next-versus")
-        const main = document.getElementById("main-container")
-        main.appendChild(btn)
+    const btn = document.createElement("button")
+    btn.innerText = "Next versus"
+    btn.classList.add("next-versus")
+    const main = document.getElementById("main-container")
+    main.appendChild(btn)
 
-        btn.addEventListener("click", () => {
-            option1.classList.remove("highlighted")
-            option2.classList.remove("highlighted")
-            const winner = document.querySelector(".winner")
-            if (winner) {
-                nextRound.push(winner.querySelector("figcaption.caption").innerText)
+    btn.addEventListener("click", () => {
+        option1.classList.remove("highlighted")
+        option2.classList.remove("highlighted")
+        const winner = document.querySelector(".winner")
+        if (winner) {
+            nextRound.push(winner.querySelector("figcaption.caption").innerText)
+        }
+
+        loose(option1)
+        loose(option2)
+        btn.remove()
+
+        const captions = document.querySelectorAll("figcaption.caption")
+        console.log(nextRound)
+        if (count < people.boys.length - 1) {
+            captions[0].innerText = people.boys[count++]
+            captions[1].innerText = people.boys[count++]
+        } else if (nextRound.length > 1) {
+            people.boys = nextRound
+            if (nextRound.length % 2 == 1){
+                nextRound = [nextRound[nextRound.length - 1]]
             }
-
-            loose(option1)
-            loose(option2)
-            btn.remove()
-
-            const captions = document.querySelectorAll("figcaption.caption")
-            console.log(nextRound)
-            if (count + 1 < people.boys.length) {
-                captions[0].innerText = people.boys[count++]
-                captions[1].innerText = people.boys[count++]
-            } else if (nextRound.length > 1) {
-                people.boys = nextRound
-                if (nextRound.length % 2 == 1){
-                    nextRound = [nextRound[nextRound.length - 1]]
-                }
-                else {
-                    nextRound = []
-                }
-                count = 0
-                round++
-                captions[0].innerText = people.boys[count++]
-                captions[1].innerText = people.boys[count++]
-            } else {
-                captions[0].innerText = nextRound[0]
-                captions[1].innerText = ""
-                alert("Турнир выиграл " + nextRound[0])
+            else {
+                nextRound = []
             }
-        })
-    }
+            count = 0
+            round++
+            captions[0].innerText = people.boys[count++]
+            captions[1].innerText = people.boys[count++]
+        } else {
+            captions[0].innerText = nextRound[0]
+            captions[1].innerText = ""
+            alert("Турнир выиграл " + nextRound[0])
+            option1.remove()
+            option2.remove()
+            window.location.href = "https://iskdava.github.io/zuck"
+        }
+    })
 }
 
 function loose(looser) {
