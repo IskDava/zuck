@@ -1,0 +1,123 @@
+* {
+    font-family: Arial, Helvetica, sans-serif;
+    color: white
+}
+body {
+    background-color: #323437;
+}
+#logo {
+    display: inline;
+}
+#nav-bar {
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+    background-color: #2c2e31;
+    padding: 10px;
+    border-radius: 10px;
+    width: 350px;
+    margin: 20px auto 0;
+}
+#nav-bar > *:not(input) {
+    cursor: pointer;
+}
+#nav-bar > *:hover {
+    color: yellow;
+}
+#nav-bar > * {
+    margin-right: 3px;
+}
+#home {
+    margin-left: 3px;
+}
+input[type="search"] {
+    border-radius: 5px;
+    border: 1px solid white;
+    color: white;
+    background-color: #2c2e31;
+    text-align: center;
+    margin-top: 4px;
+}
+input[type="search"]:focus {
+    border-color: yellow;
+    outline: none;
+    color: yellow
+}
+main {
+    padding-bottom: 30px;
+    margin-top: 50px;
+}
+#choice {
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: nowrap;
+}
+#option1, #option2 {
+    flex: 1 1 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+    height: 50%;
+}
+#option1:not(.highlighted):hover figcaption, #option2:not(.highlighted):hover figcaption{
+    color: white;
+}
+img.option {
+    padding: 10px;
+    border: 2px solid hsl(0, 0%, 30%);
+    border-radius: 100px;
+    max-width: 400px;
+    max-height: 400px;
+    cursor: pointer;
+    width: 100%;
+}
+img.option + figcaption {
+    color: gray;
+    background-color: hsl(0, 0%, 30%);
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 5px 20px;
+    width: fit-content;
+    margin: 10px auto;
+    font-size: 20px;
+    text-align: center;
+}
+#versus-sign {
+    font-size: 30px;
+    color: yellow;
+    background-color: hsl(0, 0%, 40%);
+    padding: 5px;
+    border-radius: 10px;
+    cursor: help;
+    flex: 0 0 auto;
+    white-space: nowrap;
+}
+.next-versus {
+    color: white;
+    background-color: hsl(0, 0%, 30%);
+    border: 0;
+    border-radius: 15px;
+    width: 190px;
+    padding: 5px;
+    display: block;
+    margin: 0 auto;
+    font-size: 20px;
+    cursor: pointer;
+    font-size: 30px;
+}
+.next-versus:hover {
+    color: yellow;
+}
+.end-text {
+    display: block;
+    width: 400px;
+    margin: 300px auto;
+    font-size: 40px;
+}
+.highlighted figure figcaption {
+    color: yellow;
+}
