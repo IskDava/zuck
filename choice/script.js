@@ -1,3 +1,5 @@
+alert("Все, что вы увидите далее имеет лишь развлекательную цель и никак не желает оскорбить кого-то.")
+
 const plus = document.getElementById('plus-sign')
 plus.addEventListener('mouseover', () => {
     plus.setAttribute("src", "../images/plus_yellow.png")
@@ -30,6 +32,111 @@ const option2 = document.getElementById("option2")
 
 const people = {
     "boys" : [
+        "Денис Зайцев", 
+        "Егор Мезенцев",
+        "Егор Смирнов", 
+        "Никита Сапончик",
+        "Никита Горшков",
+        "Никита Федин",
+        "Павел Оболенский",
+        "Антон Никифоров",
+        "Филипп Крестинин", 
+        "Марк Соколов",
+        "Марк Дмитриев",
+        "Олег Птахов",
+        "Александр Кудрявцев",
+        "Александр Сидоренко",
+        "Александр Ивойлов",
+        "Илья Буслаев",
+        "Давид Искиев",
+        "Давид Андреев",
+        "Кирилл Лобанов",
+        "Платон Насардинов",
+        "Алексей Андрушкевич",
+        "Алексей Рогов",
+        "Семен Ершов", 
+        "Ярослав Широв", 
+        "Ярослав Кузьмин", 
+        "Матвей Ястребов", //!
+        "Петр Бородин",
+        "Добрыня Мухоморов", 
+        "Константин Потапов", //!
+        "Роман Рутковский",
+        "Роман Югай",
+        "Иван Дворников",
+        "Иван Козлов",
+        "Тимур Файзуллин",
+        "Федор Смекалов",
+        "Андрей Кирюшкин",
+        "Андрей Вучков",
+        "Андрей Капустин",
+        "Владимир Солодников",
+        "Михаил Федорук",
+        "Артемий Бовкун", 
+        "Георгий Рогов",
+        "Гай Токарев",
+        "Сергей Якунин",
+        "Даниил Скакун",
+        "Даниил Гордон",
+        "Дмитрий Бельман",
+        "Богдан Фленкин"
+    ],
+    "girls" : [
+        "Альфина Авлеева", 
+        "Анастасия Аникина",
+        "Мария Бобровская", 
+        "Софья Борзенко", 
+        "Диана Вартанян",
+        "Елизавета Ведесова", //!
+        "Мирра Велентеенко", //!
+        "Алиса Вепренцева", 
+        "Юлия Воронцова", 
+        "Варвара Говорухина", 
+        "Ксения Горбунова", 
+        "Ульяна Гориславская",  
+        "Анастасия Горшунова",
+        "Анастасия Горюнова",
+        "Анастасия Даминова", //! 
+        "Ева Друженец",
+        "Мария Егорова", //!
+        "Софья Жедкович", //! 
+        "Анна Журба", 
+        "Илария Ибряева", 
+        "Анна Китаева", 
+        "Елизавета Климова",
+        "Елена Козырева", 
+        "Агата Корнилова", 
+        "Дарья Кудрявцева", //!
+        "Таисия Кулик", 
+        "Амира Ладная", //!
+        "Дарья Лаптиева",
+        "Майя Ларина", 
+        "Устинья Лыкова",
+        "Анастасия Максимова",
+        "Ева Маршак",
+        "Анастасия Матвеева", 
+        "Евгения Мозина",
+        "Екатерина Молчанова",
+        "Александра Мухина",
+        "Станислава Мучкина", 
+        "София Насырова",
+        "Виктория Некрасова", //!
+        "Ольга Пантюшкова", //!
+        "Дарья Пашистова",
+        "Арина Перескокова",
+        "Анастасия Полупанова", 
+        "София Попова",
+        "Полина Реженцова",
+        "Василиса Сабитова",
+        "Софья Третьяк",
+        "Екатерина Тропина",
+        "Эльмира Хайбуллина", 
+        "Малика Хамидулла",
+        "Александра Ходаркевич", //!
+        "Мария Шевякова", //!
+        "Вера Шурыгина" //!
+    ],
+    "all": [
         "Денис Зайцев",
         "Егор Мезенцев",
         "Егор Смирнов",
@@ -38,7 +145,7 @@ const people = {
         "Никита Федин",
         "Павел Оболенский",
         "Антон Никифоров",
-        "Филип Крестинин",
+        "Филипп Крестинин",
         "Марк Соколов",
         "Марк Дмитриев",
         "Олег Птахов",
@@ -54,7 +161,7 @@ const people = {
         "Алексей Рогов",
         "Семен Ершов",
         "Ярослав Широв",
-        "Ярослав Кузьмин",
+        "Ярослав Кузьмин", //!
         "Матвей Ястребов",
         "Петр Бородин",
         "Добрыня Мухоморов",
@@ -63,7 +170,7 @@ const people = {
         "Роман Югай",
         "Иван Дворников",
         "Иван Козлов",
-        "Тимур Файзулин",
+        "Тимур Файзуллин",
         "Федор Смекалов",
         "Андрей Кирюшкин",
         "Андрей Вучков",
@@ -75,9 +182,7 @@ const people = {
         "Гай Токарев",
         "Сергей Якунин",
         "Даниил Скакун",
-        "Дмитрий Бельман"
-    ],
-    "girls" : [
+        "Дмитрий Бельман",
         "Альфина Авлеева",
         "Анастасия Аникина",
         "Мария Бобровская",
@@ -106,7 +211,7 @@ const people = {
         "Таисия Кулик",
         "Амира Ладная",
         "Дарья Лаптиева",
-        "Майа Ларина",
+        "Майя Ларина",
         "Устинья Лыкова",
         "Анастасия Максимова",
         "Ева Маршак",
@@ -124,11 +229,9 @@ const people = {
         "София Попова",
         "Полина Реженцова",
         "Василиса Сабитова",
-        "Анастасия Сухенко",
-        "Элиза Терещенко",
         "Софья Третьяк",
         "Екатерина Тропина",
-        "Эльмира Хайбулина",
+        "Эльмира Хайбуллина",
         "Малика Хамидулла",
         "Александра Ходаркевич",
         "Мария Шевякова",
@@ -136,9 +239,24 @@ const people = {
     ]
 }
 
+function shuffle(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]]
+    }
+    return array
+}
+people.all = shuffle(people.all)
+
 const captions = document.querySelectorAll("figcaption.caption")
-captions[0].innerText = people.boys[count++]
-captions[1].innerText = people.boys[count++]
+const image1 = option1.querySelector(".option")
+image1.setAttribute("src", "../images/sevenGrade/" + people.all[count].replace(" ", "_") + ".jpg")
+captions[0].innerText = people.all[count++]
+const image2 = option2.querySelector(".option")
+image2.setAttribute("src", "../images/sevenGrade/" + people.all[count].replace(" ", "_") + ".jpg")
+captions[1].innerText = people.all[count++]
+
+
 
 function win(winner) {
     document.querySelectorAll(".winner").forEach(el => el.classList.remove("winner"))
@@ -167,11 +285,13 @@ function win(winner) {
 
         const captions = document.querySelectorAll("figcaption.caption")
         console.log(nextRound)
-        if (count < people.boys.length - 1) {
-            captions[0].innerText = people.boys[count++]
-            captions[1].innerText = people.boys[count++]
+        if (count < people.all.length - 1) {
+            image1.setAttribute("src", "../images/sevenGrade/" + people.all[count].replace(" ", "_") + ".jpg")
+            captions[0].innerText = people.all[count++]
+            image2.setAttribute("src", "../images/sevenGrade/" + people.all[count].replace(" ", "_") + ".jpg")
+            captions[1].innerText = people.all[count++]
         } else if (nextRound.length > 1) {
-            people.boys = nextRound
+            people.all = nextRound
             if (nextRound.length % 2 == 1){
                 nextRound = [nextRound[nextRound.length - 1]]
             }
@@ -180,9 +300,12 @@ function win(winner) {
             }
             count = 0
             round++
-            captions[0].innerText = people.boys[count++]
-            captions[1].innerText = people.boys[count++]
+            image1.setAttribute("src", "../images/sevenGrade/" + people.all[count].replace(" ", "_") + ".jpg")
+            captions[0].innerText = people.all[count++]
+            image2.setAttribute("src", "../images/sevenGrade/" + people.all[count].replace(" ", "_") + ".jpg")
+            captions[1].innerText = people.all[count++]
         } else {
+            image2.setAttribute("src", "../images/sevenGrade/" + nextRound[0].replace(" ", "_") + ".jpg")
             captions[0].innerText = nextRound[0]
             captions[1].innerText = ""
             alert("Турнир выиграл " + nextRound[0])
