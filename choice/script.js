@@ -250,10 +250,10 @@ people.all = shuffle(people.all)
 
 const captions = document.querySelectorAll("figcaption.caption")
 const image1 = option1.querySelector(".option")
-image1.setAttribute("src", "../images/sevenGrade/" + people.all[count].replace(" ", "_") + ".jpg")
+image1.setAttribute("src", "../images/sevenGrade/" + people.all[count].replace(" ", "_") + ".webp")
 captions[0].innerText = people.all[count++]
 const image2 = option2.querySelector(".option")
-image2.setAttribute("src", "../images/sevenGrade/" + people.all[count].replace(" ", "_") + ".jpg")
+image2.setAttribute("src", "../images/sevenGrade/" + people.all[count].replace(" ", "_") + ".webp")
 captions[1].innerText = people.all[count++]
 
 
@@ -286,9 +286,9 @@ function win(winner) {
         const captions = document.querySelectorAll("figcaption.caption")
         console.log(nextRound)
         if (count < people.all.length - 1) {
-            image1.setAttribute("src", "../images/sevenGrade/" + people.all[count].replace(" ", "_") + ".jpg")
+            image1.setAttribute("src", "../images/sevenGrade/" + people.all[count].replace(" ", "_") + ".webp")
             captions[0].innerText = people.all[count++]
-            image2.setAttribute("src", "../images/sevenGrade/" + people.all[count].replace(" ", "_") + ".jpg")
+            image2.setAttribute("src", "../images/sevenGrade/" + people.all[count].replace(" ", "_") + ".webp")
             captions[1].innerText = people.all[count++]
         } else if (nextRound.length > 1) {
             people.all = nextRound
@@ -300,12 +300,12 @@ function win(winner) {
             }
             count = 0
             round++
-            image1.setAttribute("src", "../images/sevenGrade/" + people.all[count].replace(" ", "_") + ".jpg")
+            image1.setAttribute("src", "../images/sevenGrade/" + people.all[count].replace(" ", "_") + ".webp")
             captions[0].innerText = people.all[count++]
-            image2.setAttribute("src", "../images/sevenGrade/" + people.all[count].replace(" ", "_") + ".jpg")
+            image2.setAttribute("src", "../images/sevenGrade/" + people.all[count].replace(" ", "_") + ".webp")
             captions[1].innerText = people.all[count++]
         } else {
-            image2.setAttribute("src", "../images/sevenGrade/" + nextRound[0].replace(" ", "_") + ".jpg")
+            image2.setAttribute("src", "../images/sevenGrade/" + nextRound[0].replace(" ", "_") + ".webp")
             captions[0].innerText = nextRound[0]
             captions[1].innerText = ""
             alert("Турнир выиграл " + nextRound[0])
