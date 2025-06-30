@@ -326,10 +326,10 @@ window.zuckArray = shuffle(window.zuckArray);
 
 const captions = document.querySelectorAll("figcaption.caption")
 const image1 = option1.querySelector(".option")
-image1.setAttribute("src", "../images/" + window.zuckArray[count].replace(" ", "_").toLowerCase() + ".webp")
+image1.setAttribute("src", "../images/" + window.zuckArray[count].replace(" ", "_") + ".webp")
 captions[0].innerText = window.zuckArray[count++]
 const image2 = option2.querySelector(".option")
-image2.setAttribute("src", "../images/" + window.zuckArray[count].replace(" ", "_").toLowerCase() + ".webp")
+image2.setAttribute("src", "../images/" + window.zuckArray[count].replace(" ", "_") + ".webp")
 captions[1].innerText = window.zuckArray[count++]
 
 
@@ -362,9 +362,9 @@ function win(winner) {
         const captions = document.querySelectorAll("figcaption.caption")
         console.log(nextRound)
         if (count < window.zuckArray.length - 1) {
-            image1.setAttribute("src", "../images/" + window.zuckArray[count].replace(" ", "_").toLowerCase() + ".webp")
+            image1.setAttribute("src", "../images/" + window.zuckArray[count].replace(" ", "_") + ".webp")
             captions[0].innerText = window.zuckArray[count++]
-            image2.setAttribute("src", "../images/" + window.zuckArray[count].replace(" ", "_").toLowerCase() + ".webp")
+            image2.setAttribute("src", "../images/" + window.zuckArray[count].replace(" ", "_") + ".webp")
             captions[1].innerText = window.zuckArray[count++]
         } else if (nextRound.length > 1) {
             window.zuckArray = nextRound
@@ -376,9 +376,9 @@ function win(winner) {
             }
             count = 0
             round++
-            image1.setAttribute("src", "../images/" + window.zuckArray[count].replace(" ", "_").toLowerCase() + ".webp")
+            image1.setAttribute("src", "../images/" + window.zuckArray[count].replace(" ", "_") + ".webp")
             captions[0].innerText = window.zuckArray[count++]
-            image2.setAttribute("src", "../images/" + window.zuckArray[count].replace(" ", "_").toLowerCase() + ".webp")
+            image2.setAttribute("src", "../images/" + window.zuckArray[count].replace(" ", "_") + ".webp")
             captions[1].innerText = window.zuckArray[count++]
         } else {
             image2.setAttribute("src", "../images/" + nextRound[0].replace(" ", "_") + ".webp")
