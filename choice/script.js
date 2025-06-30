@@ -1,5 +1,3 @@
-alert("Все, что вы увидите далее имеет лишь развлекательную цель и никак не желает оскорбить кого-то.")
-
 const plus = document.getElementById('plus-sign')
 plus.addEventListener('mouseover', () => {
     plus.setAttribute("src", "../images/plus_yellow.png")
@@ -31,6 +29,109 @@ const option1 = document.getElementById("option1")
 const option2 = document.getElementById("option2")
 
 const people = {
+    "boys": [
+        "Денис Зайцев",
+        "Егор Мезенцев",
+        "Егор Смирнов",
+        "Никита Сапончик",
+        "Никита Горшков",
+        "Никита Федин",
+        "Павел Оболенский",
+        "Антон Никифоров",
+        "Филипп Крестинин",
+        "Марк Соколов",
+        "Марк Дмитриев",
+        "Олег Птахов",
+        "Александр Кудрявцев",
+        "Александр Сидоренко",
+        "Александр Ивойлов",
+        "Илья Буслаев",
+        "Давид Искиев",
+        "Давид Андреев",
+        "Кирилл Лобанов",
+        "Платон Насардинов",
+        "Алексей Андрушкевич",
+        "Алексей Рогов",
+        "Семен Ершов",
+        "Ярослав Широв",
+        "Ярослав Кузьмин", //!
+        "Матвей Ястребов",
+        "Петр Бородин",
+        "Добрыня Мухоморов",
+        "Константин Потапов",
+        "Роман Рутковский",
+        "Роман Югай",
+        "Иван Дворников",
+        "Иван Козлов",
+        "Тимур Файзуллин",
+        "Федор Смекалов",
+        "Андрей Кирюшкин",
+        "Андрей Вучков",
+        "Андрей Капустин",
+        "Владимир Солодников",
+        "Михаил Федорук",
+        "Артемий Бовкун",
+        "Георгий Рогов",
+        "Гай Токарев",
+        "Сергей Якунин",
+        "Даниил Скакун",
+        "Дмитрий Бельман"
+    ],
+    "girls": [
+        "Альфина Авлеева",
+        "Анастасия Аникина",
+        "Мария Бобровская",
+        "Софья Борзенко",
+        "Диана Вартанян",
+        "Елизавета Ведесова",
+        "Мирра Велентеенко",
+        "Алиса Вепренцева",
+        "Юлия Воронцова",
+        "Варвара Говорухина",
+        "Ксения Горбунова",
+        "Ульяна Гориславская",
+        "Анастасия Горшунова",
+        "Анастасия Горюнова",
+        "Анастасия Даминова",
+        "Ева Друженец",
+        "Мария Егорова",
+        "Софья Жедкович",
+        "Анна Журба",
+        "Илария Ибряева",
+        "Анна Китаева",
+        "Елизавета Климова",
+        "Елена Козырева",
+        "Агата Корнилова",
+        "Дарья Кудрявцева",
+        "Таисия Кулик",
+        "Амира Ладная",
+        "Дарья Лаптиева",
+        "Майя Ларина",
+        "Устинья Лыкова",
+        "Анастасия Максимова",
+        "Ева Маршак",
+        "Анастасия Матвеева",
+        "Евгения Мозина",
+        "Екатерина Молчанова",
+        "Александра Мухина",
+        "Станислава Мучкина",
+        "София Насырова",
+        "Виктория Некрасова",
+        "Ольга Пантюшкова",
+        "Дарья Пашистова",
+        "Арина Перескокова",
+        "Анастасия Полупанова",
+        "София Попова",
+        "Полина Роженцова",
+        "Василиса Сабитова",
+        "Софья Третьяк",
+        "Екатерина Тропина",
+        "Эльмира Хайбуллина",
+        "Малика Хамидулла",
+        "Александра Ходаркевич",
+        "Мария Шевякова",
+        "Вера Шурыгина"
+    ],
     "all": [
         "Денис Зайцев",
         "Егор Мезенцев",
@@ -132,6 +233,86 @@ const people = {
         "Мария Шевякова",
         "Вера Шурыгина"
     ]
+};
+const fastfood = [
+    "French fries",
+    "Hamburger",
+    "Cheeseburger",
+    "Sandwich",
+    "Milkshake",
+    "Burrito",
+    "Taco",
+    "Hot dog",
+    "Pizza",
+    "Fried chicken",
+    "Nuggets",
+    "Onion rings",
+    "Donut",
+    "Soda",
+];
+const brainrotAnimals = [
+    "Lirili Larila",
+    "Trallallero Trallalla",
+    "Bombardiro Crocodilo",
+    "Tung Tung Tung Tung Tung Sahur",
+    "Boneca Ambalabu",
+    "Brr Brr Patapim",
+    "Chimpanzini Bananini",
+    "Bombombini Gusini",
+    "Cappuccino Assassino",
+    "Trippi Troppi",
+    "Frigo Camelo",
+    "La Vaca Saturno Saturnita",
+    "Ballerina Cappucina",
+    "U Din Din Din Din Dun Ma Din Din Din Din",
+    "Girafa Celestre",
+    "Bobrito Bandito",
+    "Ta Ta Ta Ta Ta Ta Ta Sahur",
+    "Fulli Frulla"
+]
+
+const zuckList = { //todo: should be changed to real backend
+    "1": {
+        "avatar": null,
+        "name": "8 grade",
+        "description": "Comparing every 8 grade student in Letovo",
+        "list": people.all
+    },
+    "2": {
+        "avatar": null,
+        "name": "8 grade (boys)",
+        "description": "Comparing every 8 grade boy in Letovo",
+        "list": people.boys
+    },
+    "3": {
+        "avatar": null,
+        "name": "8 grade (girls)",
+        "description": "Comparing every 8 grade girl in Letovo",
+        "list": people.girls
+    },
+    "4": {
+        "avatar": null,
+        "name": "Fast-food",
+        "description": "Comparing every junky food",
+        "list": fastfood
+    },
+    "5":    {
+        "avatar": null,
+        "name": "Italian brainrot",
+        "description": "Comparing every italian brainrot animals",
+        "list": brainrotAnimals
+    }
+}
+
+const params = new URLSearchParams(window.location.search);
+const id = params.get("zuck");
+const zuck = zuckList[id];
+if (zuck != undefined) {
+    window.zuckArray = zuck.list
+}
+else {
+    alert("unknown zuck-id")
+    window.location.href = "../index.html"
 }
 
 function shuffle(array) {
@@ -141,15 +322,15 @@ function shuffle(array) {
     }
     return array
 }
-people.all = shuffle(people.all)
+window.zuckArray = shuffle(window.zuckArray);
 
 const captions = document.querySelectorAll("figcaption.caption")
 const image1 = option1.querySelector(".option")
-image1.setAttribute("src", "../images/sevenGrade/" + people.all[count].replace(" ", "_") + ".webp")
-captions[0].innerText = people.all[count++]
+image1.setAttribute("src", "../images/" + window.zuckArray[count].replace(" ", "_").toLowerCase() + ".webp")
+captions[0].innerText = window.zuckArray[count++]
 const image2 = option2.querySelector(".option")
-image2.setAttribute("src", "../images/sevenGrade/" + people.all[count].replace(" ", "_") + ".webp")
-captions[1].innerText = people.all[count++]
+image2.setAttribute("src", "../images/" + window.zuckArray[count].replace(" ", "_").toLowerCase() + ".webp")
+captions[1].innerText = window.zuckArray[count++]
 
 
 
@@ -180,13 +361,13 @@ function win(winner) {
 
         const captions = document.querySelectorAll("figcaption.caption")
         console.log(nextRound)
-        if (count < people.all.length - 1) {
-            image1.setAttribute("src", "../images/sevenGrade/" + people.all[count].replace(" ", "_") + ".webp")
-            captions[0].innerText = people.all[count++]
-            image2.setAttribute("src", "../images/sevenGrade/" + people.all[count].replace(" ", "_") + ".webp")
-            captions[1].innerText = people.all[count++]
+        if (count < window.zuckArray.length - 1) {
+            image1.setAttribute("src", "../images/" + window.zuckArray[count].replace(" ", "_").toLowerCase() + ".webp")
+            captions[0].innerText = window.zuckArray[count++]
+            image2.setAttribute("src", "../images/" + window.zuckArray[count].replace(" ", "_").toLowerCase() + ".webp")
+            captions[1].innerText = window.zuckArray[count++]
         } else if (nextRound.length > 1) {
-            people.all = nextRound
+            window.zuckArray = nextRound
             if (nextRound.length % 2 == 1){
                 nextRound = [nextRound[nextRound.length - 1]]
             }
@@ -195,12 +376,12 @@ function win(winner) {
             }
             count = 0
             round++
-            image1.setAttribute("src", "../images/sevenGrade/" + people.all[count].replace(" ", "_") + ".webp")
-            captions[0].innerText = people.all[count++]
-            image2.setAttribute("src", "../images/sevenGrade/" + people.all[count].replace(" ", "_") + ".webp")
-            captions[1].innerText = people.all[count++]
+            image1.setAttribute("src", "../images/" + window.zuckArray[count].replace(" ", "_").toLowerCase() + ".webp")
+            captions[0].innerText = window.zuckArray[count++]
+            image2.setAttribute("src", "../images/" + window.zuckArray[count].replace(" ", "_").toLowerCase() + ".webp")
+            captions[1].innerText = window.zuckArray[count++]
         } else {
-            image2.setAttribute("src", "../images/sevenGrade/" + nextRound[0].replace(" ", "_") + ".webp")
+            image2.setAttribute("src", "../images/" + nextRound[0].replace(" ", "_") + ".webp")
             captions[0].innerText = nextRound[0]
             captions[1].innerText = ""
             alert("Турнир выиграл " + nextRound[0])

@@ -4,54 +4,60 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Zuck's home</title>
+    <link rel="stylesheet" href="global.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <!-- logo -->
-    <nav id="nav-bar">
-        <div id="home">
-            <a href="https://iskdava.github.io/zuck">
-                <img id='home-sign' width="25" height="25" src="./images/home_yellow.png" alt="guest-male"/>
+    <div id="nav-container">
+        <nav id="nav-bar">
+            <a href="index.html" id="logo-anchor">
+                <span style="font-size: 30px;">ZUCK</span>
             </a>
-        </div>
-        <div id="search">
-            <input id="search-input"
-            type="search" placeholder="search...">
+            <div id="search">
+                <input id="search-input"
+                type="search" placeholder="search...">
+            </div>
+            <button type="button" id="theme-changer" onclick="toggleTheme()">Dark</button>
+        </nav>
+    </div>
+    <div id="container">
+        <main id="main-container">
+            <section id="suggestions">
+            </section>
+        </main>
+    </div>
+    <nav id="bottom-menu">
+        <div id="home">
+            <a href="index.html">
+                <img id='home-sign' width="25" height="25" src="./images/home_yellow.png" alt="guest-male"/>
+                <span class="menu-caption">Home</span>
+            </a>
         </div>
         <div id="creation">
             <a href="https://something.com">
                 <img id='plus-sign' width="25" height="25" src="./images/plus_white.png" alt="plus-math"/>
+                <span class="menu-caption">Create</span>
             </a>
         </div>
         <div id="profile">
             <a href="https://ofioletovo.github.io/fioletovo">
                 <img id='profile-sign' width="25" height="25" src="./images/profile_white.png" alt="guest-male"/>
+                <span class="menu-caption">Profile</span>
             </a>
         </div>
     </nav>
-    <div id="container">
-        <nav id="quick">
-            <button id="trend-btn" class="top-quick quick-btn">Trend</button>
-            <hr>
-            <button id="featured-btn" class="mid-quick quick-btn">Featured</button>
-            <hr>
-            <button id="about-btn" class="quick-btn">About</button>
-        </nav>
-        <main id="main-container">
-            <section id="suggestions">
-                <article class="zuck-suggestion">
-                    <img width="150" height="150" class="zuck-avatar"
-                    src="https://static.vecteezy.com/system/resources/previews/008/442/086/non_2x/illustration-of-human-icon-user-symbol-icon-modern-design-on-blank-background-free-vector.jpg">
-                    <div class="vertical-flex">
-                        <h2>Test zuck</h2>
-                        <p>Lorem ipsum dolor sit amet.</p>
-                    </div>
-                    <a href="./choice/index.html"><button class="zuck-play zuck-btn">Play &#9658;</button></a>
-                    <button class="zuck-other">...</button>
-                </article>
-            </section>
-        </main>
-    </div>
     <script src="script.js"></script>
+    <script>
+        function toggleTheme() {
+            document.body.classList.toggle("light");
+            const btn = document.getElementById("theme-changer");
+            if (btn.innerText == "Dark") {
+                btn.innerText = "Light";
+            } else {
+                btn.innerText = "Dark"
+            }
+        }
+    </script>
 </body>
 </html>
