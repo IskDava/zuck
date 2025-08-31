@@ -1,5 +1,6 @@
 const apiBase = '/';
 
+// changing navbar icons' color when hovered
 const plus = document.getElementById('plus-sign')
 plus.parentElement.parentElement.addEventListener('mouseover', () => {
     plus.setAttribute("src", "./images/plus_yellow.png")
@@ -15,18 +16,14 @@ profile.parentElement.parentElement.addEventListener('mouseout', () => {
     profile.setAttribute("src", "./images/profile_white.png")
 })
 
-function switchContent(element, content) {
-    element.classList.add("chosen")
-    const main = document.getElementById('main-container')
-    main.innerHTML = content
-}
-
 async function loadZucks() {
     const suggestions = document.getElementById("suggestions");
 
+    // requesting a list of zucks
     const response = await fetch(apiBase + 'zucks/', {});
     const zucks = await response.json();
 
+    // showing each zucks in suggestions
     Object.keys(zucks).forEach(index => {
         const zuck = zucks[index];
         const zuckSuggestion = document.createElement("article");
@@ -36,11 +33,13 @@ async function loadZucks() {
         src="${zuck.avatar}"
         loading="lazy"
         onerror="this.src='./images/default.jpg'">
+
         <div class="vertical-flex">
             <h2>${zuck.title}</h2>
             <p class="zuck-description">${zuck.description}</p>
         </div>
-        <a href="./choice/index.html?zuck=${+index+1}"><button class="zuck-play zuck-btn">&#9658;</button></a>`;
+
+        <a href="./choice/index.html?id=${+index+1}"><button class="zuck-play zuck-btn">&#9658;</button></a>`;
         suggestions.appendChild(zuckSuggestion);
     });
 }

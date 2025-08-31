@@ -1,3 +1,5 @@
+// All default zucks stored
+
 const people = {
     "all": [
         "Денис Зайцев",

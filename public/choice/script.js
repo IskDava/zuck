@@ -1,5 +1,7 @@
+// constant variables
 const apiBase = '/';
 
+// changing icons when hovered
 const plus = document.getElementById('plus-sign')
 plus.addEventListener('mouseover', () => {
     plus.setAttribute("src", "../images/plus_yellow.png")
@@ -31,17 +33,18 @@ const option1 = document.getElementById("option1")
 const option2 = document.getElementById("option2")
 
 const params = new URLSearchParams(window.location.search);
-const id = params.get("zuck");
+const id = params.get("id");
 
 async function getElements() {
     const response = await fetch(apiBase + `zucks/getList?of=${id}`, {});
-    const zuck = await response.json();
 
-    if (!!zuck) {
+    if (response.status == 200) {
+        const zuck = await response.json();
         window.zuckArray = zuck;
     }
-    else{
-        alert("unknown zuck-id")
+    else {
+        alert((await response.text()).toString())
+        window.location.href = "../index.html"
     }
 }
 

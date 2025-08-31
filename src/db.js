@@ -3,6 +3,7 @@ import defaultZucks from './default.js';
 import fs from 'fs';
 const db = new DatabaseSync(':memory:');
 
+// here will be stored all zucks and their information (no elements)
 db.exec(`
     CREATE TABLE zucks (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -10,10 +11,11 @@ db.exec(`
         description TEXT,
         avatar TEXT,
         author TEXT
-    )`)
+)`)
 
 
 // for photos value is the path to image
+// here each element (ever created) will be stored connected to its zuck by zuck_id
 db.exec(`
     CREATE TABLE elements (
         zuck_id INTEGER,
@@ -26,34 +28,58 @@ db.exec(`
     )
 `)
 
-// default
+// get all zucks by author
 const findDefault = db.prepare(`SELECT * FROM zucks WHERE author = ?`);
 
+// all default zucks are made by Dava (me)
 const defaults = findDefault.all("Dava");
 
+// preparing SQL command to add zucks
 const addZuck = db.prepare(`INSERT INTO zucks (title, description, avatar, author) VALUES (?, ?, ?, ?)`);
 
-const addElement = db.prepare(`INSERT INTO elements (zuck_id, name, photo) VALUES (?, ?, ?)`);
+// preparing SQL command to add elements
+const addElement = db.prepare(`INSERT INTO elements (id, zuck_id, name, photo) VALUES (?, ?, ?, ?)`);
 
 function addZuckByJSON(zuck) {
-    addZuck.run(zuck.name, zuck.description, zuck.avatar, zuck.author);
+    // function to add everything at once (zuck + its elements)
+    /* example of JSON required
+    "id": {
+        "avatar": "image_file_name.webp", // can be .jpg or .png
+        "name": "Test zuck",
+        "description": "Providing an example of zuck",
+        "id": id,
+        "author": "Mark Sokolov",
+        "list": ["elment1", "element2", ...]
+    }
+    */
 
+    // running recently prepared command
+    addZuck.run(zuck.name, zuck.description, zuck.id + '/avatar/' + zuck.avatar, zuck.author);
 
+    // iterating through elements adding it to elements' table
+    let counter = 0;
     zuck.list.forEach(person => {
-        const imageFile = person.replace(" ", "_");
-        addElement.run(zuck.id, person, imageFile + ".webp" || imageFile + ".jpg" || imageFile + ".png");
+        const imageFile = zuck.id + '/' + person.replace(" ", "_");
+        const postfixes = ['.webp', '.jpg', '.png'];
+        let correctImageFileName;
+        for (let i = 0; i < postfixes.length; i++) {
+            // checking correct file extention
+            if (fs.existsSync("../public/images/" + imageFile + postfixes[i])) {
+                correctImageFileName = imageFile + postfixes[i];
+                break;
+            }
+        }
+        addElement.run(counter, zuck.id, person, correctImageFileName || "default.jpg");
+        counter++;
     });
 }
 
+// if found default zucks in db
 if (defaults) {
-    console.log(defaultZucks);
+    // adding all default zucks if no
     Object.values(defaultZucks).forEach(zuck => {
         addZuckByJSON(zuck);
     });
 }
-
-const getAll = db.prepare(`SELECT * FROM elements`);
-
-fs.writeFile("text.txt", JSON.stringify(getAll.all(), null, 4), (err) => {});
 
 export { db, addZuckByJSON }
