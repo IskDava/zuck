@@ -73,61 +73,53 @@ async function  showElements() {
 
 
 function win(winner) {
-    document.querySelectorAll(".winner").forEach(el => el.classList.remove("winner"))
-    winner.classList.add('winner')
-    const potentialBtn = document.querySelector(".next-versus")
-    if (potentialBtn) {
-        potentialBtn.remove()
-    }
-    const btn = document.createElement("button")
-    btn.innerText = "Next versus"
-    btn.classList.add("next-versus")
-    const main = document.getElementById("main-container")
-    main.appendChild(btn)
+    document.querySelectorAll(".winner").forEach(el => el.classList.remove("winner"));
+    winner.classList.add('winner');
 
-    btn.addEventListener("click", () => {
-        option1.classList.remove("highlighted")
-        option2.classList.remove("highlighted")
-        const winner = document.querySelector(".winner")
-        if (winner) {
-            nextRound.push(winner.querySelector("figcaption.caption").innerText)
-        }
+    option1.classList.remove("highlighted");
+    option2.classList.remove("highlighted");
 
-        loose(option1)
-        loose(option2)
-        btn.remove()
-
-        const captions = document.querySelectorAll("figcaption.caption")
-        console.log(nextRound)
-        if (count < window.zuckArray.length - 1) {
-            image1.setAttribute("src", "../images/" + window.zuckArray[count].photo)
-            captions[0].innerText = window.zuckArray[count++].name
-            image2.setAttribute("src", "../images/" + window.zuckArray[count].photo)
-            captions[1].innerText = window.zuckArray[count++].name
-        } else if (nextRound.length > 1) {
-            window.zuckArray = nextRound
-            if (nextRound.length % 2 == 1){
-                nextRound = [nextRound[nextRound.length - 1]]
-            }
-            else {
-                nextRound = []
-            }
-            count = 0
-            round++
-            image1.setAttribute("src", "../images/" + window.zuckArray[count].photo)
-            captions[0].innerText = window.zuckArray[count++].name
-            image2.setAttribute("src", "../images/" + window.zuckArray[count].photo)
-            captions[1].innerText = window.zuckArray[count++].name
-        } else {
-            image2.setAttribute("src", "../images/" + window.zuckArray[count].photo)
-            captions[0].innerText = nextRound[0]
-            captions[1].innerText = ""
-            alert("Турнир выиграл " + nextRound[0])
-            option1.remove()
-            option2.remove()
-            window.location.href = "https://iskdava.github.io/zuck"
+    const winnerName = winner.querySelector("figcaption.caption").innerText;
+    zuckArray.forEach(element => {
+        if (element.name == winnerName) {
+            nextRound.push(element);
+            return;
         }
     })
+
+    loose(option1);
+    loose(option2);
+
+    const captions = document.querySelectorAll("figcaption.caption");
+    console.log(nextRound);
+    if (count < window.zuckArray.length - 1) {
+        image1.setAttribute("src", "../images/" + window.zuckArray[count].photo)
+        captions[0].innerText = window.zuckArray[count++].name
+        image2.setAttribute("src", "../images/" + window.zuckArray[count].photo)
+        captions[1].innerText = window.zuckArray[count++].name
+    } else if (nextRound.length > 1) {
+        window.zuckArray = nextRound
+        if (nextRound.length % 2 == 1){
+            nextRound = [nextRound[nextRound.length - 1]]
+        }
+        else {
+            nextRound = []
+        }
+        count = 0
+        round++
+        image1.setAttribute("src", "../images/" + window.zuckArray[count].photo)
+        captions[0].innerText = window.zuckArray[count++].name
+        image2.setAttribute("src", "../images/" + window.zuckArray[count].photo)
+        captions[1].innerText = window.zuckArray[count++].name
+    } else {
+        image2.setAttribute("src", "../images/" + nextRound[0].photo)
+        captions[0].innerText = nextRound[0].name
+        captions[1].innerText = ""
+        alert("Турнир выиграл " + nextRound[0].name)
+        option1.remove()
+        option2.remove()
+        window.location.href = "../index.html"
+    }
 }
 
 function loose(looser) {

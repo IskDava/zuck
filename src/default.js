@@ -209,7 +209,7 @@ const people = {
 
 const zuckList = {
     "1": {
-        "avatar": "",
+        "avatar": "everyone.webp",
         "name": "8 grade",
         "description": "Comparing every 8 grade student in Letovo",
         "id": 1,

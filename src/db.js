@@ -1,7 +1,13 @@
 import { DatabaseSync } from "node:sqlite";
 import defaultZucks from './default.js';
 import fs from 'fs';
+import path, { dirname } from 'path'
+import { fileURLToPath } from "url";
 const db = new DatabaseSync(':memory:');
+
+const __filename = fileURLToPath(import.meta.url);
+
+const __dirname = dirname(__filename);
 
 // here will be stored all zucks and their information (no elements)
 db.exec(`
@@ -64,7 +70,7 @@ function addZuckByJSON(zuck) {
         let correctImageFileName;
         for (let i = 0; i < postfixes.length; i++) {
             // checking correct file extention
-            if (fs.existsSync("../public/images/" + imageFile + postfixes[i])) {
+            if (fs.existsSync(path.join(__dirname, "../public/images/" + imageFile + postfixes[i]))) {
                 correctImageFileName = imageFile + postfixes[i];
                 break;
             }

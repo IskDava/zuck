@@ -30,7 +30,7 @@ async function loadZucks() {
         zuckSuggestion.setAttribute("class", "zuck-suggestion");
         zuckSuggestion.innerHTML = `
         <img width="150" height="150" class="zuck-avatar"
-        src="${zuck.avatar}"
+        src="./images/${zuck.avatar}"
         loading="lazy"
         onerror="this.src='./images/default.jpg'">
 
