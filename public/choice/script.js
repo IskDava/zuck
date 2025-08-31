@@ -76,8 +76,8 @@ function win(winner) {
     document.querySelectorAll(".winner").forEach(el => el.classList.remove("winner"));
     winner.classList.add('winner');
 
-    option1.setAttribute("src", "../images/default.jpg");
-    option2.setAttribute("src", "../images/default.jpg");
+    option1.querySelector("img").setAttribute("src", "../images/default.jpg");
+    option2.querySelector("img").setAttribute("src", "../images/default.jpg");
 
     const winnerName = winner.querySelector("figcaption.caption").innerText;
     zuckArray.forEach(element => {
