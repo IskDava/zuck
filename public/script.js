@@ -16,6 +16,33 @@ profile.parentElement.parentElement.addEventListener('mouseout', () => {
     profile.setAttribute("src", "./images/profile_white.png")
 })
 
+let isMinimized = false;
+function checkOverflow() {
+    const vw = window.innerWidth;
+    console.log(vw);
+
+    if (vw < 600) {
+        const allAvatars = document.querySelectorAll(".zuck-avatar");
+        console.log(allAvatars.length);
+
+        allAvatars.forEach(avatar => {
+            avatar.setAttribute("hidden", true);
+        })
+
+        isMinimized = true;
+    } else if (isMinimized) {
+        const allAvatars = document.querySelectorAll(".zuck-avatar");
+
+        allAvatars.forEach(avatar => {
+            avatar.removeAttribute("hidden");
+        })
+
+        isMinimized = false;
+    }
+}
+
+window.addEventListener("resize", checkOverflow);
+
 async function loadZucks() {
     const suggestions = document.getElementById("suggestions");
 
@@ -42,33 +69,7 @@ async function loadZucks() {
         <a href="./choice/index.html?id=${+index+1}"><button class="zuck-play zuck-btn">&#9658;</button></a>`;
         suggestions.appendChild(zuckSuggestion);
     });
+    checkOverflow();
 }
-
-let isMinimized = false;
-
-function checkOverflow() {
-    const vw = window.innerWidth;
-
-    if (vw < 600) {
-        const allAvatars = document.querySelectorAll(".zuck-avatar");
-
-        allAvatars.forEach(avatar => {
-            avatar.setAttribute("hidden", true);
-        })
-
-        isMinimized = true;
-    } else if (isMinimized) {
-        const allAvatars = document.querySelectorAll(".zuck-avatar");
-
-        allAvatars.forEach(avatar => {
-            avatar.removeAttribute("hidden");
-        })
-
-        isMinimized = false;
-    }
-}
-
-window.addEventListener("resize", checkOverflow);
-window.addEventListener("load", checkOverflow);
 
 loadZucks();
