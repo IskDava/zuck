@@ -1,0 +1,24 @@
+{
+  "name": "zuck",
+  "version": "2.0.0",
+  "description": "A game, where you need to choose one of the two given people or things",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "test": "node --watch --env-file=.env ./src/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/IskDava/zuck.git"
+  },
+  "author": "Dava",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/IskDava/zuck/issues"
+  },
+  "homepage": "https://github.com/IskDava/zuck#readme",
+  "dependencies": {
+    "express": "^5.1.0",
+    "sqlite": "^5.1.1"
+  }
+}
