@@ -76,8 +76,8 @@ function win(winner) {
     document.querySelectorAll(".winner").forEach(el => el.classList.remove("winner"));
     winner.classList.add('winner');
 
-    option1.classList.remove("highlighted");
-    option2.classList.remove("highlighted");
+    option1.setAttribute("src", "../images/default.jpg");
+    option2.setAttribute("src", "../images/default.jpg");
 
     const winnerName = winner.querySelector("figcaption.caption").innerText;
     zuckArray.forEach(element => {
@@ -115,7 +115,7 @@ function win(winner) {
         image2.setAttribute("src", "../images/" + nextRound[0].photo)
         captions[0].innerText = nextRound[0].name
         captions[1].innerText = ""
-        alert("Турнир выиграл " + nextRound[0].name)
+        alert("The winner is " + nextRound[0].name)
         option1.remove()
         option2.remove()
         window.location.href = "../index.html"
@@ -132,16 +132,12 @@ function loose(looser) {
 
 option1.addEventListener("click", () => {
     win(option1)
-    option1.classList.add("highlighted")
     loose(option2)
-    option2.classList.remove("highlighted")
 })
 
 option2.addEventListener("click", () => {
     win(option2)
-    option2.classList.add("highlighted")
     loose(option1)
-    option1.classList.remove("highlighted")
 })
 
 showElements();
