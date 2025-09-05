@@ -18,7 +18,7 @@ app.get('/', (req, res) => { // loading main page
     res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
-app.use('/zucks', zucksRoutes); // for all /zuck requests using zucksRoutes.js's router
+app.use('/api/zucks', zucksRoutes); // for all /zuck requests using zucksRoutes.js's router
 
 app.listen(PORT, () => { // when started server
     console.log(`Server started on port: ${PORT}`);

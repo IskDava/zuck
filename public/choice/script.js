@@ -1,5 +1,5 @@
 // constant variables
-const apiBase = '/';
+const apiBase = '/api/';
 
 // changing icons when hovered
 const plus = document.getElementById('plus-sign')
@@ -72,72 +72,39 @@ async function  showElements() {
 }
 
 
-function win(winner) {
-    document.querySelectorAll(".winner").forEach(el => el.classList.remove("winner"));
-    winner.classList.add('winner');
+function win(winner, winnerObj, looserObj) {
+    looserObj.querySelector("img").setAttribute("src", "../images/default.jpg");
 
-    option1.querySelector("img").setAttribute("src", "../images/default.jpg");
-    option2.querySelector("img").setAttribute("src", "../images/default.jpg");
 
-    const winnerName = winner.querySelector("figcaption.caption").innerText;
-    zuckArray.forEach(element => {
-        if (element.name == winnerName) {
-            nextRound.push(element);
-            return;
-        }
-    })
+    count++;
+    
+    if (count < zuckArray.length - 1) {
+        const looserCaption = looserObj.querySelector(".caption");
+        const looserImg = looserObj.querySelector("img.option");
 
-    loose(option1);
-    loose(option2);
-
-    const captions = document.querySelectorAll("figcaption.caption");
-    console.log(nextRound);
-    if (count < window.zuckArray.length - 1) {
-        image1.setAttribute("src", "../images/" + window.zuckArray[count].photo)
-        captions[0].innerText = window.zuckArray[count++].name
-        image2.setAttribute("src", "../images/" + window.zuckArray[count].photo)
-        captions[1].innerText = window.zuckArray[count++].name
-    } else if (nextRound.length > 1) {
-        window.zuckArray = nextRound
-        if (nextRound.length % 2 == 1){
-            nextRound = [nextRound[nextRound.length - 1]]
-        }
-        else {
-            nextRound = []
-        }
-        count = 0
-        round++
-        image1.setAttribute("src", "../images/" + window.zuckArray[count].photo)
-        captions[0].innerText = window.zuckArray[count++].name
-        image2.setAttribute("src", "../images/" + window.zuckArray[count].photo)
-        captions[1].innerText = window.zuckArray[count++].name
+        looserCaption.innerText = zuckArray[count].name;
+        looserImg.setAttribute("src", "../images/" + zuckArray[count].photo);
     } else {
-        image2.setAttribute("src", "../images/" + nextRound[0].photo)
-        captions[0].innerText = nextRound[0].name
-        captions[1].innerText = ""
-        alert("The winner is " + nextRound[0].name)
-        option1.remove()
-        option2.remove()
-        window.location.href = "../index.html"
-    }
-}
+        const winnerName = winnerObj.querySelector(".caption");
 
-function loose(looser) {
-    const title = looser.querySelector(".winner-title")
-    if (title) {
-        looser.removeChild(title)
-        looser.classList.remove("winner")
+        alert(`${winnerName.innerText} won!`);
+
+        window.location.href = "../index.html";
     }
 }
 
 option1.addEventListener("click", () => {
-    win(option1)
-    loose(option2)
+    win(1, option1, option2)
 })
 
 option2.addEventListener("click", () => {
-    win(option2)
-    loose(option1)
+    win(2, option2, option1)
+})
+
+const backBtn = document.getElementById("back-btn");
+
+backBtn.addEventListener("click", () => {
+    
 })
 
 showElements();

@@ -1,4 +1,4 @@
-const apiBase = '/';
+const apiBase = '/api/';
 
 // changing navbar icons' color when hovered
 const plus = document.getElementById('plus-sign')
