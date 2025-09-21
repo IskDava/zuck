@@ -25,9 +25,10 @@ home.addEventListener('mouseout', () => {
 })
 
 
-let count = 0
-let nextRound = []
-let round = 1
+let count = 0;
+let previous = undefined;
+let nextRound = [];
+let round = 1;
 
 const option1 = document.getElementById("option1")
 const option2 = document.getElementById("option2")
@@ -56,34 +57,47 @@ function shuffle(array) {
     return array
 }
 
+function updateOption(option) {
+    const caption = option.querySelector(".caption");
+    const img = option.querySelector("img.option");
+
+    caption.innerText = option.objectval.name;
+    img.setAttribute("src", "../images/" + option.objectval.photo);
+}
+
 let image1, image2;
 async function  showElements() {
     await getElements();
 
     window.zuckArray = shuffle(window.zuckArray);
 
-    const captions = document.querySelectorAll("figcaption.caption")
-    image1 = option1.querySelector(".option")
-    image1.setAttribute("src", "../images/" + window.zuckArray[count].photo)
-    captions[0].innerText = window.zuckArray[count++].name;
-    image2 = option2.querySelector(".option")
-    image2.setAttribute("src", "../images/" + window.zuckArray[count].photo)
-    captions[1].innerText = window.zuckArray[count++].name
-}
+    previous = [
+        [
+        zuckArray[count],
+        zuckArray[count+1]
+        ]
+    ];
 
+    option1.objectval = zuckArray[count];
+    updateOption(option1)
+
+    option2.objectval = zuckArray[++count];
+    updateOption(option2)
+}
 
 function win(winner, winnerObj, looserObj) {
     looserObj.querySelector("img").setAttribute("src", "../images/default.jpg");
 
-
+    previous.push([
+        option1.objectval,
+        option2.objectval
+    ])
     count++;
-    
-    if (count < zuckArray.length - 1) {
-        const looserCaption = looserObj.querySelector(".caption");
-        const looserImg = looserObj.querySelector("img.option");
+    console.log(previous);
 
-        looserCaption.innerText = zuckArray[count].name;
-        looserImg.setAttribute("src", "../images/" + zuckArray[count].photo);
+    if (count < zuckArray.length - 1) {
+        looserObj.objectval = zuckArray[count];
+        updateOption(looserObj);
     } else {
         const winnerName = winnerObj.querySelector(".caption");
 
@@ -104,7 +118,28 @@ option2.addEventListener("click", () => {
 const backBtn = document.getElementById("back-btn");
 
 backBtn.addEventListener("click", () => {
-    
-})
+    if (previous == undefined || count == 1) {
+        return;
+    }
+    console.log(previous)
+    count--;
+
+    const options = [option1, option2];
+
+    const goal = previous[previous.length - 1];
+
+    if (goal[0] == option1.objectval) {
+        option2.objectval = goal[1];
+
+        updateOption(option2);
+    } else {
+        option1.objectval = goal[0];
+
+        updateOption(option1);
+    }
+
+    previous.pop();
+    console.log(previous);
+});
 
 showElements();
