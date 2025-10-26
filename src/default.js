@@ -471,34 +471,26 @@ const grade8 = {
 
 const zuckList = {
     "1": {
-        "avatar": "",
-        "name": "8 grade 25/26",
-        "description": "Every 8 grade student (25/26)",
-        "id": 1,
-        "author": "Dava",
-        "list": grade8.all
-    },
-    "2": {
         "avatar": "everyone.webp",
         "name": "7 grade 24/25",
         "description": "Comparing every 7 grade (24/25) student in Letovo",
-        "id": 2,
+        "id": 1,
         "author": "Dava",
         "list": grade7.all
     },
-    "3": {
+    "2": {
         "avatar": "",
         "name": "7 grade 24/25 (boys)",
         "description": "Comparing every 7 grade (24/25) boy in Letovo",
-        "id": 3,
+        "id": 2,
         "author": "Dava",
         "list": grade7.boys
     },
-    "4": {
+    "3": {
         "avatar": "",
         "name": "7 grade 24/25 (girls)",
         "description": "Comparing every 7 grade (24/25) girl in Letovo",
-        "id": 4,
+        "id": 3,
         "author": "Dava",
         "list": grade7.girls
     }

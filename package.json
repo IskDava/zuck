@@ -20,6 +20,8 @@
   "homepage": "https://github.com/IskDava/zuck#readme",
   "dependencies": {
     "express": "^5.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "package": "^1.0.1",
     "sqlite": "^5.1.1"
   }
 }

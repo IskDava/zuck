@@ -1,5 +1,7 @@
 const apiBase = '/api/';
 
+let token = localStorage.getItem('token')
+
 // changing navbar icons' color when hovered
 const plus = document.getElementById('plus-sign')
 plus.parentElement.parentElement.addEventListener('mouseover', () => {
@@ -43,11 +45,45 @@ function checkOverflow() {
 
 window.addEventListener("resize", checkOverflow);
 
+async function authenticate() {
+    try {
+        const response = await fetch(apiBase + 'auth/register', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({})
+        });
+
+        if (!response.ok) {
+            const text = await response.text();
+            console.error('HTTP error', response.status, text);
+            return;
+        }
+
+        let data = await response.json();
+
+        if (data.token) {
+            token = data.token;
+            localStorage.setItem('token', token);
+
+            await loadZucks();
+        }
+    }
+    catch (err) {
+        console.log(err.message)
+    }
+}
+
 async function loadZucks() {
     const suggestions = document.getElementById("suggestions");
 
     // requesting a list of zucks
-    const response = await fetch(apiBase + 'zucks/', {});
+    const response = await fetch(apiBase + 'zucks/', {
+        headers: {
+            'Authorization': token
+        }
+    });
     const zucks = await response.json();
 
     // showing each zucks in suggestions
@@ -72,4 +108,11 @@ async function loadZucks() {
     checkOverflow();
 }
 
-loadZucks();
+if (token) {
+    async function run() {
+        await loadZucks();
+    }
+    run();
+} else {
+    authenticate();
+}

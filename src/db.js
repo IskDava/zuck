@@ -3,6 +3,7 @@ import defaultZucks from './default.js';
 import fs from 'fs';
 import path, { dirname } from 'path'
 import { fileURLToPath } from "url";
+
 const db = new DatabaseSync(':memory:');
 
 const __filename = fileURLToPath(import.meta.url);
@@ -27,6 +28,7 @@ db.exec(`
         zuck_id INTEGER,
         id INTEGER,
         name TEXT,
+        rating INTEGER,
         photo TEXT,
         PRIMARY KEY (zuck_id, id),
         FOREIGN KEY(zuck_id)
@@ -44,9 +46,10 @@ const defaults = findDefault.all("Dava");
 const addZuck = db.prepare(`INSERT INTO zucks (title, description, avatar, author) VALUES (?, ?, ?, ?)`);
 
 // preparing SQL command to add elements
-const addElement = db.prepare(`INSERT INTO elements (id, zuck_id, name, photo) VALUES (?, ?, ?, ?)`);
+const addElement = db.prepare(`INSERT INTO elements (id, zuck_id, name, rating, photo) VALUES (?, ?, ?, ?, ?)`);
+const startRating = 1000;
 
-function addZuckByJSON(zuck) {
+function addZuckByJSON(zuck, rating = startRating) {
     // function to add everything at once (zuck + its elements)
     /* example of JSON required
     "id": {
@@ -75,7 +78,7 @@ function addZuckByJSON(zuck) {
                 break;
             }
         }
-        addElement.run(counter, zuck.id, person, correctImageFileName || "default.jpg");
+        addElement.run(counter, zuck.id, person, rating, correctImageFileName || "default.jpg");
         counter++;
     });
 }

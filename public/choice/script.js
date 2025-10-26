@@ -1,6 +1,8 @@
 // constant variables
 const apiBase = '/api/';
 
+let token = localStorage.getItem("token");
+
 // changing icons when hovered
 const plus = document.getElementById('plus-sign')
 plus.addEventListener('mouseover', () => {
@@ -37,7 +39,11 @@ const params = new URLSearchParams(window.location.search);
 const id = params.get("id");
 
 async function getElements() {
-    const response = await fetch(apiBase + `zucks/getList?of=${id}`, {});
+    const response = await fetch(apiBase + `zucks/getList?of=${id}`, {
+        headers: {
+            'Authorization': token
+        }
+    });
 
     if (response.status == 200) {
         const zuck = await response.json();
@@ -55,6 +61,28 @@ function shuffle(array) {
         [array[i], array[j]] = [array[j], array[i]]
     }
     return array
+}
+
+function quicksort(arr) {
+    // not bubble-sort
+    if (!arr.length)
+        return arr;
+    let left = [];
+    let mid = [];
+    let right = [];
+    let p = arr[Math.floor(arr.length/2)];
+
+    arr.forEach(e => {
+        if (e === p)
+            mid.push(e);
+        else if (e < p)
+            right.push(e);
+        else
+            left.push(e);
+    });
+    left = quicksort(left);
+    right = quicksort(right);
+    return left.concat(mid, right);
 }
 
 function updateOption(option) {
@@ -85,21 +113,48 @@ async function  showElements() {
     updateOption(option2)
 }
 
-function win(winner, winnerObj, looserObj) {
+async function win(winnerObj, looserObj) {
     looserObj.querySelector("img").setAttribute("src", "../images/default.jpg");
 
     previous.push([
         option1.objectval,
         option2.objectval
     ])
+
+    const response = await fetch(apiBase + "zucks/calcelo",
+        {
+            method: "POST",
+            headers: {
+                "Content-type": "application/json"
+            },
+            body: JSON.stringify({
+                winner: winnerObj,
+                looser: looserObj
+            })
+        }
+    )
+
+    const newRatings = await response.json();
+
+    winnerObj.objectval.rating = newRatings.winnerNewRating;
+    looserObj.objectval.rating = newRatings.looserNewRating;
+
     count++;
-    console.log(previous);
 
     if (count < zuckArray.length - 1) {
         looserObj.objectval = zuckArray[count];
         updateOption(looserObj);
     } else {
         const winnerName = winnerObj.querySelector(".caption");
+
+        let ratings = [];
+
+        zuckArray.forEach(obj => {
+            ratings.push(obj.rating);
+        })
+
+        console.log(`New ratings: 
+${quicksort(ratings)}`)
 
         alert(`${winnerName.innerText} won!`);
 
@@ -108,11 +163,11 @@ function win(winner, winnerObj, looserObj) {
 }
 
 option1.addEventListener("click", () => {
-    win(1, option1, option2)
+    win(option1, option2)
 })
 
 option2.addEventListener("click", () => {
-    win(2, option2, option1)
+    win(option2, option1)
 })
 
 const backBtn = document.getElementById("back-btn");
@@ -142,4 +197,11 @@ backBtn.addEventListener("click", () => {
     console.log(previous);
 });
 
-showElements();
+if (token) {
+    async function run() {
+        await showElements();
+    }
+    run();
+} else {
+    authenticate();
+}
