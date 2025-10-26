@@ -90,20 +90,24 @@ async function loadZucks() {
     Object.keys(zucks).forEach(index => {
         const zuck = zucks[index];
         const zuckSuggestion = document.createElement("article");
+        const anchor = document.createElement("a");
+        anchor.setAttribute("href", `./choice/index.html?id=${+index+1}`);
+        anchor.setAttribute('class', 'suggestion-wrapper');
+        anchor.style.textDecoration = "none";
         zuckSuggestion.setAttribute("class", "zuck-suggestion");
         zuckSuggestion.innerHTML = `
-        <img width="150" height="150" class="zuck-avatar"
-        src="./images/${zuck.avatar}"
-        loading="lazy"
-        onerror="this.src='./images/default.jpg'">
+            <img width="150" height="150" class="zuck-avatar"
+            src="./images/${zuck.avatar}"
+            loading="lazy"
+            onerror="this.src='./images/default.jpg'">
 
-        <div class="vertical-flex">
-            <h2>${zuck.title}</h2>
-            <p class="zuck-description">${zuck.description}</p>
-        </div>
-
-        <a href="./choice/index.html?id=${+index+1}"><button class="zuck-play zuck-btn">&#9658;</button></a>`;
-        suggestions.appendChild(zuckSuggestion);
+            <div class="vertical-flex">
+                <h2>${zuck.title}</h2>
+                <p class="zuck-description">${zuck.description}</p>
+            </div>
+        `;
+        anchor.appendChild(zuckSuggestion);
+        suggestions.appendChild(anchor)
     });
     checkOverflow();
 }

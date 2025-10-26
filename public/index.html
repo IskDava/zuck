@@ -10,10 +10,12 @@
 <body>
     <!-- todo: logo -->
     <div id="nav-container">
-        <nav id="nav-bar">
+        <div id="logo">
             <a href="index.html" id="logo-anchor">
                 <span style="font-size: 30px;">ZUCK</span>
             </a>
+        </div>
+        <nav id="nav-bar">
             <!--
             <div id="search">
                 <input id="search-input" type="search" placeholder="coming soon...">
@@ -24,35 +26,28 @@
             <!--todo:
             <button type="button" id="theme-changer" onclick="toggleTheme()">dark</button>
             -->
+            <div id="home">
+                <a href="../index.html">
+                    <img id='home-sign' width="25" height="25" src="../images/home_yellow.png" alt="guest-male"/>
+                </a>
+            </div>
+            <div id="creation">
+                <a href="https://something.com">
+                    <img id='plus-sign' width="25" height="25" src="../images/plus_white.png" alt="plus-math"/>
+                </a>
+            </div>
+            <div id="profile">
+                <a href="https://ofioletovo.github.io/fioletovo">
+                    <img id='profile-sign' width="25" height="25" src="../images/profile_white.png" alt="guest-male"/>
+                </a>
+            </div>
         </nav>
     </div>
-    <div id="container">
-        <main id="main-container">
-            <section id="suggestions">
-                <!-- here will be all suggested zucks -->
-            </section>
-        </main>
-    </div>
-    <nav id="bottom-menu">
-        <div id="home">
-            <a href="index.html">
-                <img id='home-sign' width="25" height="25" src="./images/home_yellow.png" alt="guest-male"/>
-                <span class="menu-caption">Home</span>
-            </a>
-        </div>
-        <div id="creation">
-            <a onclick="alert('coming soon')">
-                <img id='plus-sign' width="25" height="25" src="./images/plus_white.png" alt="plus-math"/>
-                <span class="menu-caption">Create</span>
-            </a>
-        </div>
-        <div id="profile">
-            <a onclick="alert('coming soon')">
-                <img id='profile-sign' width="25" height="25" src="./images/profile_white.png" alt="guest-male"/>
-                <span class="menu-caption">Profile</span>
-            </a>
-        </div>
-    </nav>
+    <main id="main-container">
+        <section id="suggestions">
+            <!-- here will be all suggested zucks -->
+        </section>
+    </main>
     <script src="script.js"></script>
 </body>
 </html>

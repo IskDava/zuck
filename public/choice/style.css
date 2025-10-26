@@ -17,21 +17,22 @@ main {
     width: 50%;
     height: 50%;
 }
-#option1:not(.highlighted):hover figcaption, #option2:not(.highlighted):hover figcaption{
-    color: white;
+#option1:hover figcaption, #option2:hover figcaption{
+    color: rgb(255, 255, 0);
 }
 img.option {
+    background-color: hsl(0, 0%, 20%);
     padding: 10px;
-    border: 2px solid hsl(0, 0%, 30%);
+    border: 2px solid hsl(0, 0%, 10%);
     border-radius: 100px;
-    max-width: 400px;
-    max-height: 400px;
+    max-width: 700px;
+    max-height: 700px;
     cursor: pointer;
     width: 100%;
 }
 img.option + figcaption {
-    color: gray;
-    background-color: hsl(0, 0%, 30%);
+    color: #DEDEDE;
+    background-color: hsl(0, 0%, 17.5%);
     border-radius: 5px;
     cursor: pointer;
     padding: 5px 20px;
@@ -40,40 +41,11 @@ img.option + figcaption {
     font-size: 20px;
     text-align: center;
 }
-#versus-sign {
-    font-size: 30px;
-    color: yellow;
-    background-color: hsl(0, 0%, 40%);
-    padding: 5px;
-    border-radius: 10px;
-    cursor: help;
-    flex: 0 0 auto;
-    white-space: nowrap;
-}
-.next-versus {
-    color: white;
-    background-color: hsl(0, 0%, 30%);
-    border: 0;
-    border-radius: 15px;
-    width: 190px;
-    padding: 5px;
-    display: block;
-    margin: 0 auto;
-    font-size: 20px;
-    cursor: pointer;
-    font-size: 30px;
-}
-.next-versus:hover {
-    color: yellow;
-}
 .end-text {
     display: block;
     width: 400px;
     margin: 300px auto;
     font-size: 40px;
-}
-.highlighted figure figcaption {
-    color: yellow;
 }
 #back-btn {
     width: 75px;
