@@ -7,7 +7,7 @@
 }
 .zuck-avatar {
     border: 7px solid var(--avatar-borders);
-    border-radius: 20px;
+    border-radius: 50px;
     margin-right: 10px;
     width: 35%;
     height: 35%;
@@ -32,7 +32,7 @@
     border: 2px solid var(--borders);
     transition: border 0.5s;
     padding: 25px 25px 35px;
-    border-radius: 15px;
+    border-radius: 40px;
 }
 .zuck-suggestion:hover {
     border: 2px solid hsl(51, 100%, 30%);
