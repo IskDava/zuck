@@ -1,8 +1,10 @@
 const apiBase = '/api/';
 
+// if token is in localStorage, getting it instantly
 let token = localStorage.getItem('token')
 
 // changing navbar icons' color when hovered
+// home icon is skipped, because user is already at the home page
 const plus = document.getElementById('plus-sign')
 plus.parentElement.parentElement.addEventListener('mouseover', () => {
     plus.setAttribute("src", "./images/plus_yellow.png")
@@ -20,6 +22,7 @@ profile.parentElement.parentElement.addEventListener('mouseout', () => {
 
 let isMinimized = false;
 function checkOverflow() {
+    // hiding avatars if overflow happens
     const vw = window.innerWidth;
     console.log(vw);
 
@@ -43,9 +46,11 @@ function checkOverflow() {
     }
 }
 
+// checking overflow every time window is resized
 window.addEventListener("resize", checkOverflow);
 
 async function authenticate() {
+    // register user opening the website
     try {
         const response = await fetch(apiBase + 'auth/register', {
             method: 'POST',

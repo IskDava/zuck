@@ -1,4 +1,6 @@
-// default zucks
+// All default zucks
+
+// lists of people
 
 const grade7 = {
     "all": [
@@ -468,6 +470,18 @@ const grade8 = {
         "Вера Шурыгина"
     ]
 };
+
+// list of zucks 
+/*
+"id": {
+    "avatar": "avatar_file_name.webp",
+    "name": "Zuck's title",
+    "description": "Some more information",
+    "id": id,
+    "author": "Author name",
+    "list": [Element1, Element2, ...]
+}
+*/
 
 const zuckList = {
     "1": {
