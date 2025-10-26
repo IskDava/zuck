@@ -55,15 +55,13 @@ body {
     justify-content: center;
 }
 #nav-bar {
-    box-shadow: 0 0 10px var(--nav-shadow);
     display: flex;
     flex-direction: row;
     align-items: center;
-    gap: 30px;
+    justify-content: space-between;
+    width: fit-content;
     padding: 10px;
     border-radius: 10px;
-    width: fit-content;
-    margin: 10px auto 0;
     background: var(--gradient);
 }
 #logo-anchor {

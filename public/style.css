@@ -29,7 +29,6 @@
     background: var(--bg);
     background: var(--gradient);
     border: 2px solid var(--borders);
-    border-top: 2px solid var(--top-border);
     padding: 25px 25px 35px;
     border-radius: 10px;
 }
