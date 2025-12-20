@@ -71,6 +71,8 @@ function addZuckByJSON(zuck, rating = startRating) {
         const imageFile = zuck.id + '/' + person.replace(" ", "_");
         const postfixes = ['.webp', '.jpg', '.png'];
         let correctImageFileName;
+
+
         for (let i = 0; i < postfixes.length; i++) {
             // checking correct file extention
             if (fs.existsSync(path.join(__dirname, "../public/images/" + imageFile + postfixes[i]))) {

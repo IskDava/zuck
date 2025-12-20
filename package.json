@@ -1,7 +1,7 @@
 {
   "name": "zuck",
   "version": "2.0.0",
-  "description": "A game, where you need to choose one of the two given people or things",
+  "description": "A game, where you need to choose one of the two objects",
   "main": "server.js",
   "type": "module",
   "scripts": {
@@ -21,6 +21,7 @@
   "dependencies": {
     "express": "^5.1.0",
     "jsonwebtoken": "^9.0.2",
+    "mysql2": "^3.15.3",
     "package": "^1.0.1",
     "sqlite": "^5.1.1"
   }

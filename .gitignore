@@ -3,3 +3,4 @@ src/dbs/*
 example.*
 test.*
 *.env
+.REST

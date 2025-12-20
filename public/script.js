@@ -1,7 +1,7 @@
 const apiBase = '/api/';
 
-// if token is in localStorage, getting it instantly
-let token = localStorage.getItem('token')
+// if token is in sessionStorage, getting it instantly
+let token = sessionStorage.getItem('token')
 
 // changing navbar icons' color when hovered
 // home icon is skipped, because user is already at the home page
@@ -70,7 +70,7 @@ async function authenticate() {
 
         if (data.token) {
             token = data.token;
-            localStorage.setItem('token', token);
+            sessionStorage.setItem('token', token);
 
             await loadZucks();
         }

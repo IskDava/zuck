@@ -75,6 +75,6 @@ router.post('/calcelo', (req, res) => {
 
     // returning new ratings
     res.status(200).json({winnerNewRating, looserNewRating});
-})
+});
 
 export default router

@@ -1,7 +1,7 @@
 // constant variables
 const apiBase = '/api/';
 
-let token = localStorage.getItem("token");
+let token = sessionStorage.getItem("token");
 
 // changing icons when hovered
 const plus = document.getElementById('plus-sign')
@@ -51,6 +51,7 @@ async function getElements() {
     }
     else {
         alert((await response.text()).toString())
+        console.log('A')
         window.location.href = "../index.html"
     }
 }
@@ -63,25 +64,26 @@ function shuffle(array) {
     return array
 }
 
-function quicksort(arr) {
+function quicksort(arr, key= x => { return x; }) {
     // not bubble-sort
     if (!arr.length)
         return arr;
     let left = [];
     let mid = [];
     let right = [];
-    let p = arr[Math.floor(arr.length/2)];
+    let p = key(arr[Math.floor(arr.length/2)]);
 
     arr.forEach(e => {
-        if (e === p)
+        val = key(e);
+        if (val === p)
             mid.push(e);
-        else if (e < p)
+        else if (val < p)
             right.push(e);
         else
             left.push(e);
     });
-    left = quicksort(left);
-    right = quicksort(right);
+    left = quicksort(left, key);
+    right = quicksort(right, key);
     return left.concat(mid, right);
 }
 
@@ -125,7 +127,8 @@ async function win(winnerObj, looserObj) {
         {
             method: "POST",
             headers: {
-                "Content-type": "application/json"
+                "Content-type": "application/json",
+                "Authorization": token
             },
             body: JSON.stringify({
                 winner: winnerObj,
@@ -153,8 +156,7 @@ async function win(winnerObj, looserObj) {
             ratings.push(obj.rating);
         })
 
-        console.log(`New ratings: 
-${quicksort(ratings)}`)
+        const newArray = quicksort(zuckArray, el => { return el.rating; });
 
         alert(`${winnerName.innerText} won!`);
 
