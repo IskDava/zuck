@@ -58,7 +58,6 @@ body {
 }
 #logo {
     display: block;
-    width: 100px;
     background-color: var(--gradient);
 }
 #nav-bar {

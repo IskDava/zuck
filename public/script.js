@@ -6,6 +6,8 @@ let token = sessionStorage.getItem('token')
 // changing navbar icons' color when hovered
 // home icon is skipped, because user is already at the home page
 const plus = document.getElementById('plus-sign')
+
+/*
 plus.parentElement.parentElement.addEventListener('mouseover', () => {
     plus.setAttribute("src", "./images/plus_yellow.png")
 })
@@ -19,6 +21,7 @@ profile.parentElement.parentElement.addEventListener('mouseover', () => {
 profile.parentElement.parentElement.addEventListener('mouseout', () => {
     profile.setAttribute("src", "./images/profile_white.png")
 })
+*/
 
 let isMinimized = false;
 function checkOverflow() {

@@ -5,6 +5,7 @@ let token = sessionStorage.getItem("token");
 
 // changing icons when hovered
 const plus = document.getElementById('plus-sign')
+/*
 plus.addEventListener('mouseover', () => {
     plus.setAttribute("src", "../images/plus_yellow.png")
 })
@@ -25,6 +26,7 @@ home.addEventListener('mouseover', () => {
 home.addEventListener('mouseout', () => {
     home.setAttribute("src", "../images/home_white.png")
 })
+*/
 
 
 let count = 0;
