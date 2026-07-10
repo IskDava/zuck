@@ -511,7 +511,7 @@ const grade8 = {
 
 const zuckList = {    
     "1": {
-        "avatar": "",
+        "avatar": "everyone.jpg",
         "name": "8 grade 25/26",
         "description": "Every 8 grade student (25/26)",
         "id": 1,
