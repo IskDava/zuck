@@ -6,7 +6,8 @@
   "type": "module",
   "scripts": {
     "test": "node --watch --env-file=.env ./src/server.js",
-    "dev": "node ./src/server.js"
+    "dev": "node ./src/server.js",
+    "build": "npm install express jsonwebtoken mysql2 sqlite"
   },
   "repository": {
     "type": "git",
