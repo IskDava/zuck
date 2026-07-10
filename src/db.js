@@ -68,9 +68,12 @@ function addZuckByJSON(zuck, rating = startRating) {
     // iterating through elements adding it to elements' table
     let counter = 0;
     zuck.list.forEach(person => {
-        const imageFile = zuck.id + '/' + person.replace(" ", "_");
+        const folder = zuck.images == undefined ? zuck.id: zuck.images
+        const imageFile = folder + '/' + person.replace(" ", "_");
         const postfixes = ['.webp', '.jpg', '.png'];
         let correctImageFileName;
+
+        console.log(folder)
 
 
         for (let i = 0; i < postfixes.length; i++) {
