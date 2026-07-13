@@ -1,0 +1,200 @@
+{% load static %}
+{{ elements|json_script:"zuck" }}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zuck Game</title>
+    <link rel="stylesheet" href={% static "global.css" %}>
+    <link rel="stylesheet" href={% static "choice.css" %}>
+</head>
+<body>
+    <div id="nav-container">
+        <div id="logo">
+            <a href="home.html" id="logo-anchor">
+                <span style="font-size: 30px;">ZUCK</span>
+            </a>
+        </div>
+        <!--
+        <nav id="nav-bar">
+            <div id="home">
+                <a href="../index.html">
+                    <img id='home-sign' width="25" height="25" src="../images/home_white.png" alt="guest-male"/>
+                </a>
+            </div>
+            <div id="creation">
+                <a href="">
+                    <img id='plus-sign' width="25" height="25" src="../images/plus_white.png" alt="plus-math"/>
+                </a>
+            </div>
+            <div id="profile">
+                <a href="">
+                    <img id='profile-sign' width="25" height="25" src="../images/profile_white.png" alt="guest-male"/>
+                </a>
+            </div>
+        </nav>
+        -->
+    </div>
+    <main id="main-container">
+        <div id="choice">
+            <div id="option1">
+                <figure>
+                    <img class="option"
+                    loading="lazy"
+                    src={% static 'default.jpg' %}>
+                    <figcaption class="caption">...</figcaption>
+                </figure>
+            </div>
+            <div id="option2">
+                <figure>
+                    <img class="option"
+                    loading="lazy"
+                    src={% static 'default.jpg' %}>
+                    <figcaption class="caption">...</figcaption>
+                </figure>
+            </div>
+        </div>
+        <button id="back-btn"><img src={% static '/coolicons PNG/White/Arrow/Arrow_Undo_Up_Left.png' %} /></button>
+    </main>
+    <script>
+        let count = 0;
+        let previous = undefined;
+        let nextRound = [];
+        let round = 1;
+
+        const option1 = document.getElementById("option1")
+        const option2 = document.getElementById("option2")
+
+        function shuffle(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]]
+            }
+            return array
+        }
+
+        function quicksort(arr, key= x => { return x; }) {
+            // not bubble-sort
+            if (!arr.length)
+                return arr;
+            let left = [];
+            let mid = [];
+            let right = [];
+            let p = key(arr[Math.floor(arr.length/2)]);
+
+            arr.forEach(e => {
+                val = key(e);
+                if (val === p)
+                    mid.push(e);
+                else if (val < p)
+                    right.push(e);
+                else
+                    left.push(e);
+            });
+            left = quicksort(left, key);
+            right = quicksort(right, key);
+            return left.concat(mid, right);
+        }
+
+        function updateOption(option) {
+            const caption = option.querySelector(".caption");
+            const img = option.querySelector("img.option");
+
+            caption.innerText = option.objectval.name;
+
+            img.setAttribute("src", '{% static id %}/' + option.objectval.img);
+        }
+
+        let image1, image2;
+        function  showElements() {
+            window.zuckArray = JSON.parse(
+                document.getElementById('zuck').textContent
+            );
+
+            window.zuckArray = shuffle(window.zuckArray);
+
+            previous = [
+                [
+                zuckArray[count],
+                zuckArray[count+1]
+                ]
+            ];
+
+            option1.objectval = zuckArray[count];
+            updateOption(option1)
+
+            option2.objectval = zuckArray[++count];
+            updateOption(option2)
+        }
+
+        function win(winnerObj, looserObj) {
+            looserObj.querySelector("img").setAttribute("src", "../images/default.jpg");
+
+            previous.push([
+                option1.objectval,
+                option2.objectval
+            ])
+
+            count++;
+
+            if (count < zuckArray.length - 1) {
+                looserObj.objectval = zuckArray[count];
+                updateOption(looserObj);
+            } else {
+                const winnerName = winnerObj.querySelector(".caption");
+
+                let ratings = [];
+
+                zuckArray.forEach(obj => {
+                    ratings.push(obj.rating);
+                })
+
+                const newArray = quicksort(zuckArray, el => { return el.rating; });
+
+                alert(`${winnerName.innerText} won!`);
+
+                window.location.href = "/";
+            }
+        }
+
+        option1.addEventListener("click", () => {
+            win(option1, option2)
+        })
+
+        option2.addEventListener("click", () => {
+            win(option2, option1)
+        })
+
+        const backBtn = document.getElementById("back-btn");
+
+        backBtn.addEventListener("click", () => {
+            if (previous == undefined || count == 1) {
+                return;
+            }
+            console.log(previous)
+            count--;
+
+            const options = [option1, option2];
+
+            const goal = previous[previous.length - 1];
+
+            if (goal[0] == option1.objectval) {
+                option2.objectval = goal[1];
+
+                updateOption(option2);
+            } else {
+                option1.objectval = goal[0];
+
+                updateOption(option1);
+            }
+
+            previous.pop();
+            console.log(previous);
+        });
+    
+        showElements();
+    </script>
+</body>
+</html>

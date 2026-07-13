@@ -28,7 +28,8 @@ DEBUG = os.environ["DEBUG"] == "True"
 
 ALLOWED_HOSTS = [
     '.railway.app',
-    'davashton.com'
+    'davashton.com',
+    '127.0.0.1'
 ]
 
 
@@ -42,12 +43,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'zucks.apps.ZucksConfig',
-    'homepage',
-    "whitenoise.runserver_nostatic"
+    'homepage'
 ]
 
 MIDDLEWARE = [
-    "whitenoise.middleware.WhiteNoiseMiddleware",
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -125,7 +124,3 @@ USE_TZ = True
 STATIC_URL = 'static/'
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
 STATIC_ROOT = BASE_DIR / "staticfiles"
-
-STATICFILES_STORAGE = (
-    "whitenoise.storage.CompressedManifestStaticFilesStorage"
-)
