@@ -1,0 +1,5 @@
+[build]
+buildCommand = "python manage.py collectstatic --noinput"
+
+[deploy]
+startCommand = "gunicorn myproject.wsgi"
